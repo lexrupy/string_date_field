@@ -1,0 +1,29 @@
+StringDateField
+===============
+
+Create a accessor method in model to access date fields thought a string
+
+
+Example
+=======
+
+class Equipment < ActiveRecord::Base
+  define_string_date_field :created_at
+end
+
+>> eq = Equipment.created
+>> eq.created_at_str = '01012009'
+=> '01012009'
+>> eq.created_at
+=> Thu, 01 Jan 2009
+>> eq.created_at_str = '19+10+2010'
+=> '19+10+2010'
+>> eq.created_at
+=> Tue, 19 Oct 2010
+
+
+This plugin ignore the separators, so you are free to use or not while inputing
+dates
+
+Copyright (c) 2009 Alexandre da Silva, released under the MIT license
+
