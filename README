@@ -22,6 +22,28 @@ end
 => Tue, 19 Oct 2010
 
 
+
+
+The date formats will be taken from your I18n configuration.
+default output format will be the date.formats.default.
+if you want to use other format than the default 'dd/mm/yyyy' for input
+you will need to add a "compact" to date formats in your I18n file like this:
+
+
+pt-BR:
+  # formatos de data e hora
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %B"
+      long: "%d de %B de %Y"
+      compact: "%d%m%Y"  # <--
+
+
+
+This plugin was tested with Rails 3 and work's fine.
+
+
 This plugin ignore the separators, so you are free to use or not while inputing
 dates
 
