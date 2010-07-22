@@ -5,7 +5,7 @@ module StringDateField
     def validate_date(date)
       begin
         date_str = date.to_s.gsub(/[^0-9]/,'')
-        Date.strptime(date_str, '%d%m%Y')
+        Date.strptime(date_str, I18n.t('date.formats.compact', :default => '%d%m%Y')
       rescue ArgumentError
         false
       end
@@ -15,8 +15,8 @@ module StringDateField
   def define_string_date_field(*names)
     names.each do |name|
       define_method "#{name}_str" do
-        attr = read_attribute(name)
-        attr.to_date.to_s unless attr.nil?
+        attr_val = read_attribute(name)
+        I18n.l(attr_val.to_date) unless attr_val.nil?
       end
 
       define_method "#{name}_str=" do |time_str|
