@@ -5,7 +5,7 @@ module StringDateField
     def validate_date(date)
       begin
         date_str = date.to_s.gsub(/[^0-9]/,'')
-        Date.strptime(date_str, I18n.t('date.formats.compact', :default => '%d%m%Y')
+        Date.strptime(date_str, I18n.t('date.formats.compact', :default => '%d%m%Y'))
       rescue ArgumentError
         false
       end
